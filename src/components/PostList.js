@@ -1,5 +1,6 @@
 import React from 'react';
 import PostItem from "./PostItem";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const PostList = ({postList, name, remove, addControl}) => {
     return (
@@ -8,11 +9,18 @@ const PostList = ({postList, name, remove, addControl}) => {
                 <h1>Список оптимизаций пользователя {name}</h1>
             </div>
             <button onClick={() => addControl(true)} className="post_list_add_btn">Add post</button>
-            {
-                postList.map((post) =>
-                    <PostItem post={post} key={post.id} remove={remove}/>
-                )
-            }
+            <TransitionGroup>
+                {
+                    postList.map((post) =>
+                        <CSSTransition
+                            key={post.id}
+                            timeout={500}
+                            classNames="post">
+                            <PostItem post={post} remove={remove}/>
+                        </CSSTransition>
+                    )
+                }
+            </TransitionGroup>
         </div>
     );
 };

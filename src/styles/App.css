@@ -105,3 +105,21 @@ button {
     text-transform: uppercase;
     font-family: "Roboto", serif;
 }
+
+.post-enter {
+    opacity: 0;
+}
+
+.post-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.post-exit {
+    opacity: 1;
+}
+
+.post-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
