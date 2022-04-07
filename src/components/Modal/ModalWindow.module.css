@@ -17,7 +17,8 @@
 
 .modal_content {
     padding: 25px;
-    background: white;
+    background: linear-gradient(45deg, #0a1b20, #2e464d);
+    box-shadow: 6px 4px 15px #97cbb7, -6px -4px 15px #97cbb7;
     border-radius: 16px;
-    min-width: 1200px;
+    min-width: 400px;
 }
