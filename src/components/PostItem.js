@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostItem = ({post}) => {
+const PostItem = ({post, remove}) => {
     return (
         <div className="post">
             <div className="post_content">
@@ -10,7 +10,9 @@ const PostItem = ({post}) => {
                 <h3><b>Дата оптимизации:</b> {post.date}</h3>
                 <h3><b>Статус:</b> {post.status}</h3>
             </div>
-            <button className="post_button">Delete</button>
+            <button onClick={() => remove(post)} className="post_button">
+                Delete
+            </button>
         </div>
     );
 };
