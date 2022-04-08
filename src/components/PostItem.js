@@ -9,6 +9,7 @@ const PostItem = ({post, remove}) => {
                 </h1>
                 <h3><b>Дата оптимизации:</b> {post.date}</h3>
                 <h3><b>Статус:</b> {post.status}</h3>
+                <h3><b>Кол-во БС:</b> {post.bs_number}</h3>
             </div>
             <button onClick={() => remove(post)} className="post_button">
                 Delete
