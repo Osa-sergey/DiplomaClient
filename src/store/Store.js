@@ -2,7 +2,7 @@ import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
 
 export default class Store {
-    user = {};
+    user = '';
     isAuth = false;
 
     constructor() {
@@ -22,7 +22,8 @@ export default class Store {
             const response = await AuthService.login(email, password);
             localStorage.setItem('token', response.data.token);
             this.setAuth(true);
-            this.setUser(response.data.first_name + response.data.last_name)
+            console.log(response.data)
+            this.setUser(response.data.first_name + ' ' + response.data.last_name)
         } catch (e) {
             console.log(e);
         }

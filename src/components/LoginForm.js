@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 const LoginForm = ({setModalVisible}) => {
     const [email, setEmail] = useState('')
@@ -21,8 +22,8 @@ const LoginForm = ({setModalVisible}) => {
                 placeholder='password'
             />
             <button onClick={() => {
-                   // store.login(email, password);
-                    setModalVisible(false);
+                   store.login(email, password);
+                   setModalVisible(false);
                 }
             } >
                 Логин
@@ -31,4 +32,4 @@ const LoginForm = ({setModalVisible}) => {
     );
 };
 
-export default LoginForm;
+export default observer(LoginForm);
