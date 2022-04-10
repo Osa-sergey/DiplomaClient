@@ -81,7 +81,9 @@ b {
     width: 35%;
 }
 
-.post_list_add_btn {
+.post_list_btns {
+    display: flex;
+    justify-content: space-between;
     margin-top: 16px;
     width: 100%;
 }
