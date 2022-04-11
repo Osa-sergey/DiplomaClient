@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ModalWindow from "./Modal/ModalWindow";
 import CreateNewPostInput from "./CreateNewPostInput";
+import FileService from "../services/FileService";
 
 const CreateNewPost = ({postModal, setPostModal}) => {
 
@@ -19,10 +20,12 @@ const CreateNewPost = ({postModal, setPostModal}) => {
 
     function onDropHandler(e) {
         e.preventDefault()
-        let file = e.dataTransfer.files
-        const formDate = new FormData()
-        formDate.append("file", file)
-        //axios запрос проверка ответа если ок
+        let file = [...e.dataTransfer.files]
+        console.log(file)
+        const data = new FormData()
+        data.append('file', file)
+        data.append("dummy", 'b')
+        const response =  FileService.sendFile(data)
         setLoaded(true)
         setFileDrag(false)
     }

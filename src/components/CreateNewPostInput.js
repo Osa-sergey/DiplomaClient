@@ -12,35 +12,15 @@ const CreateNewPostInput = () => {
                     className="new_post_inp"
                     placeholder="Количество машин"
                     type="number"/>
+                <input
+                    className="new_post_inp"
+                    placeholder="Радиус БС (км)"
+                    type="number"/>
+                <input
+                    className="new_post_inp"
+                    placeholder="Радиус АС (км)"
+                    type="number"/>
                 <button>Отправить</button>
-            </div>
-            <div className="post_input">
-                <h4 style={{"color":"white"}}>Тип точки</h4>
-                <div className="radio_btn">
-                    <input type="radio"
-                           name="point_type"
-                           value="bc"
-                           id="bc"
-                           defaultChecked="true"/>
-                    <label htmlFor="bc">Штаб</label>
-                </div>
-                <div className="radio_btn">
-                    <input type="radio"
-                           name="point_type"
-                           value="bs"
-                           id="bs"/>
-                    <label htmlFor="bs">Базирование машин</label>
-                </div>
-                <div className="radio_btn">
-                    <input type="radio"
-                           name="point_type"
-                           value="iz"
-                           id="iz"/>
-                    <label htmlFor="iz">Зоны интереса</label>
-                </div>
-            </div>
-            <div className="post_input_clean">
-                <button>Очистить</button>
             </div>
         </div>
     );

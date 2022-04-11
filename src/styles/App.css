@@ -182,6 +182,7 @@ button {
 }
 
 .post_input_clean {
+    margin-top: 16px;
     position: relative;
     text-align: center;
 }
