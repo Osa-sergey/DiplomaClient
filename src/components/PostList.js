@@ -1,27 +1,36 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import PostItem from "./PostItem";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import CreateNewPost from "./CreateNewPost";
+import PostsService from "../services/PostsService";
 
 const PostList = () => {
-    const [posts, setPosts] = useState([
-        {id: 1, title: "Первый пост", date: "10.04.2000", status: "В процессе", bs_number: 5},
-        {id: 2, title: "Первый пост", date: "10.04.2000", status: "В процессе", bs_number: 5},
-        {id: 3, title: "Первый пост", date: "10.04.2000", status: "В процессе", bs_number: 5},
-        {id: 4, title: "Первый пост", date: "10.04.2000", status: "В процессе", bs_number: 5},
-        {id: 5, title: "Первый пост", date: "10.04.2000", status: "В процессе", bs_number: 5},
-    ])
-    const [postModal, setPostModal] = useState(false)
-    const {store} = useContext(Context)
+    const [posts, setPosts] = useState([])
+    const [postModal, setPostModal] = useState(false);
+    const {store} = useContext(Context);
+    useEffect(() =>
+    {
+        getPostList();
+        if(posts !== null && posts[0] !== undefined){
+            store.setTmpPostId(posts[0].id)
+        }
+    }, [])
 
     const removePost = (post) => {
-        setPosts(posts.filter(p => p.id !== post.id))
+        PostsService.deleteOptimizationById(post.id);
+        setPosts(posts.filter(p => p.id !== post.id));
     }
 
-    function updatePostList() {
+    const selectPost = (post) => {
+        store.setTmpPostId(post.id);
+    }
 
+    const getPostList = async () => {
+        const userId = store.userId;
+        const response = await PostsService.getOptimizationsById(userId);
+        setPosts([...response.data])
     }
 
     return (
@@ -33,7 +42,7 @@ const PostList = () => {
                 </div>
                 <div className="post_list_btns">
                     <button onClick={() => setPostModal(true)}>Add post</button>
-                    <button onClick={() => updatePostList()}>Update</button>
+                    <button onClick={() => getPostList()}>Update</button>
                 </div>
                 <TransitionGroup>
                     {
@@ -42,7 +51,7 @@ const PostList = () => {
                                 key={post.id}
                                 timeout={500}
                                 classNames="post">
-                                <PostItem post={post} remove={removePost}/>
+                                <PostItem post={post} remove={removePost} select={selectPost}/>
                             </CSSTransition>
                         )
                     }

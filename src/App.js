@@ -25,7 +25,7 @@ function App() {
             </ModalWindow>
             <PostList/>
             <button className="logout_button" onClick={() => store.logout()}>logout</button>
-            <div className="viewer">hello</div>
+            <div className="viewer">{store.tmpPostId}</div>
         </div>
     );
 }

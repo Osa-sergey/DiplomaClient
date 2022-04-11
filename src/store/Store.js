@@ -3,7 +3,9 @@ import AuthService from "../services/AuthService";
 
 export default class Store {
     user = '';
+    userId = -1;
     isAuth = false;
+    tmpPostId = -1;
 
     constructor() {
         makeAutoObservable(this);
@@ -17,6 +19,14 @@ export default class Store {
         this.user = user
     }
 
+    setTmpPostId(id) {
+        this.tmpPostId = id;
+    }
+
+    setUserId(id) {
+        this.userId = id;
+    }
+
     async login(email, password) {
         try {
             const response = await AuthService.login(email, password);
@@ -24,6 +34,7 @@ export default class Store {
             this.setAuth(true);
             console.log(response.data)
             this.setUser(response.data.first_name + ' ' + response.data.last_name)
+            this.setUserId(response.data.user_id)
         } catch (e) {
             console.log(e);
         }
@@ -44,6 +55,7 @@ export default class Store {
             localStorage.removeItem('token');
             this.setAuth(false);
             this.setUser({});
+            this.setUserId(-1);
         } catch (e) {
             console.log(e);
         }
