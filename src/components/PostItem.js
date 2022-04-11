@@ -1,8 +1,8 @@
 import React from 'react';
 
-const PostItem = ({post, remove}) => {
+const PostItem = ({post, remove, select}) => {
     return (
-        <div className="post">
+        <div onClick={() => select(post)} className="post">
             <div className="post_content">
                 <h1>
                     <strong className="header_text">{post.title}</strong>
@@ -11,9 +11,11 @@ const PostItem = ({post, remove}) => {
                 <h3><b>Статус:</b> {post.status}</h3>
                 <h3><b>Кол-во БС:</b> {post.bs_number}</h3>
             </div>
-            <button onClick={() => remove(post)} className="post_button">
-                Delete
-            </button>
+            <div className="post_button">
+                <button onClick={() => remove(post)}>
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };
