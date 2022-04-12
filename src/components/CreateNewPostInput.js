@@ -5,11 +5,11 @@ import PostsService from "../services/PostsService";
 
 const CreateNewPostInput = ({setVisible}) => {
     const {store} = useContext(Context);
-    const [post, setPost] = useState({title: '', userId: store.userId})
+    const [post, setPost] = useState({roadmapId: '',title: '', bsNumber: '', bsRad: '', asRad: '', userId: store.userId})
 
     async function createPost() {
         const response = await PostsService.createOptimizationWithRoadmapId(post)
-        setPost({title: '', userId: store.userId})
+        setPost({roadmapId: '',title: '', bsNumber: '', bsRad: '', asRad: '', userId: store.userId})
         if(response.status === 200) {
             setVisible(false)
         }
@@ -19,6 +19,7 @@ const CreateNewPostInput = ({setVisible}) => {
         <div>
             <div className="post_input">
                 <input
+                    value={post.roadmapId}
                     onChange={e => setPost({...post, roadmapId: e.target.value})}
                     className="new_post_inp"
                     placeholder="id файла"
@@ -26,22 +27,26 @@ const CreateNewPostInput = ({setVisible}) => {
             </div>
             <div className="post_input">
                 <input
+                    value={post.title}
                     onChange={e => setPost({...post, title: e.target.value})}
                     className="new_post_inp"
                     placeholder="Название"
                     type="text"/>
                 <input
+                    value={post.bsNumber}
                     onChange={e => setPost({...post, bsNumber: e.target.value})}
                     className="new_post_inp"
                     placeholder="Количество машин"
                     type="number"/>
                 <input
+                    value={post.bsRad}
                     onChange={e => setPost({...post, bsRad: e.target.value})}
                     className="new_post_inp"
                     placeholder="Радиус БС (км)"
                     type="number"
                     step="0.01"/>
                 <input
+                    value={post.asRad}
                     onChange={e => setPost({...post, asRad: e.target.value})}
                     className="new_post_inp"
                     placeholder="Радиус АС (км)"
