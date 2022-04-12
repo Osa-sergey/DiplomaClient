@@ -48,7 +48,7 @@ const CreateNewPost = ({postModal, setPostModal}) => {
                         loaded && (<div className="prev_area map_area"> Проверка </div>)
                     }
                 </div>
-                <CreateNewPostInput/>
+                <CreateNewPostInput setVisible={setPostModal}/>
             </div>
         </ModalWindow>
     );

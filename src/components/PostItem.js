@@ -11,9 +11,10 @@ const PostItem = ({post, remove, select}) => {
                 </h1>
                 <h3><b>Дата оптимизации:</b> {datetime}</h3>
                 <h3><b>Статус:</b> {post.status}</h3>
-                <h3><b>Кол-во БС:</b> {post.bs_number}</h3>
-                <h3><b>Радиус БС:</b> {post.bs_rad}</h3>
-                <h3><b>Радиус АС:</b> {post.as_rad}</h3>
+                <h3><b>Кол-во БС:</b> {post.bsNumber}</h3>
+                <h3><b>Радиус БС:</b> {post.bsRad}</h3>
+                <h3><b>Радиус АС:</b> {post.asRad}</h3>
+                <h3><b>RoadmapId:</b> {post.roadmapId}</h3>
             </div>
             <div className="post_button">
                 <button onClick={() => remove(post)}>

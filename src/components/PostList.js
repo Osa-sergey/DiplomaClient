@@ -15,6 +15,11 @@ const PostList = () => {
         getPostList();
     }, [])
 
+    useEffect(() =>
+    {
+        getPostList()
+    }, [postModal])
+
     const removePost = (post) => {
         PostsService.deleteOptimizationById(post.id);
         setPosts(posts.filter(p => p.id !== post.id));
