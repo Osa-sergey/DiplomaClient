@@ -215,3 +215,12 @@ button {
     width: 1110px;
     height: 560px;
 }
+
+.viewer_hint {
+    margin-top: 8px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-family: "Roboto", serif;
+    font-weight: bold;
+}

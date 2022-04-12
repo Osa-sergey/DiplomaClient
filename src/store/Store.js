@@ -5,7 +5,7 @@ export default class Store {
     user = '';
     userId = -1;
     isAuth = false;
-    tmpPostId = -1;
+    tmpPost = {id: -1};
 
     constructor() {
         makeAutoObservable(this);
@@ -19,8 +19,8 @@ export default class Store {
         this.user = user
     }
 
-    setTmpPostId(id) {
-        this.tmpPostId = id;
+    setTmpPost(post) {
+        this.tmpPost = post;
     }
 
     setUserId(id) {

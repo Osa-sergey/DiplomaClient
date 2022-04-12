@@ -13,9 +13,6 @@ const PostList = () => {
     useEffect(() =>
     {
         getPostList();
-        if(posts !== null && posts[0] !== undefined){
-            store.setTmpPostId(posts[0].id)
-        }
     }, [])
 
     const removePost = (post) => {
@@ -24,7 +21,7 @@ const PostList = () => {
     }
 
     const selectPost = (post) => {
-        store.setTmpPostId(post.id);
+        store.setTmpPost(post);
     }
 
     const getPostList = async () => {
